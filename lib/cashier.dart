@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cashier/model/pay_channel_entity.dart';
+import 'package:cashier/widget/Toast.dart';
 import 'package:flutter/material.dart';
 import 'RoundCheckBox.dart';
 import 'http/HttpUtils.dart';
@@ -72,139 +73,142 @@ class MyHttpClientState extends State<MyHttpClient> {
         backgroundColor: Colors.white,
         elevation: 1,
       ),
-      body: Container(
-          child: ListView.builder(
-              itemCount: (_data?.data?.payChannels?.length == null ||
-                      _data?.data?.payChannels?.length == 0)
-                  ? 1
-                  : _data.data.payChannels.length + 1,
-              itemBuilder: (context, index) {
-                print("index = $index ");
+      body: SafeArea(
+        child: Container(
+            child: ListView.builder(
+                itemCount: (_data?.data?.payChannels?.length == null ||
+                        _data?.data?.payChannels?.length == 0)
+                    ? 1
+                    : _data.data.payChannels.length + 1,
+                itemBuilder: (context, index) {
+                  print("index = $index ");
 
-                if (index == 0) {
-                  // 顶部结算信息
-                  return Container(
-                    height: 70,
-                    color: Colors.white,
-                    margin: EdgeInsets.only(bottom: 5),
-                    padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Text(
-                            "订单金额",
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: 14,
-                              fontFamily: "苹方-简 中黑体",
+                  if (index == 0) {
+                    // 顶部结算信息
+                    return Container(
+                      height: 70,
+                      color: Colors.white,
+                      margin: EdgeInsets.only(bottom: 5),
+                      padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              "订单金额",
+                              style: TextStyle(
+                                color: Color(0xFF333333),
+                                fontSize: 14,
+                                fontFamily: "苹方-简 中黑体",
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
+                          Text(
 //                          "￥371.00",
-                          "￥${_data?.data?.orderAmt == null ? "" : _data.data.orderAmt}",
-                          style: TextStyle(
-                            color: Color(0xFF1C1717),
-                            fontSize: 18,
-                            fontFamily: "苹方-简 中黑体",
-                          ),
-                          textAlign: TextAlign.end,
-                        ),
-                      ],
-                    ),
-                  );
-                } else {
-                  PayChannelDataPayChannel payChannel =
-                      _data.data.payChannels[index - 1];
-                  String image = "";
-                  if (payChannel.isDefault == "1") {
-                    _select = payChannel.channelCode;
-                  }
-                  switch (payChannel.channelCode) {
-                    case "1":
-                      image = "images/kzp.png";
-                      break;
-                    case "2":
-                      image = "images/wx.png";
-                      break;
-                    case "3":
-                      image = "images/zfb.png";
-                      break;
-                  }
-                  return
-                      // 库分期
-                      Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(image),
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                payChannel.channelName,
-                                style: TextStyle(
-                                  color: Color(0xFF333333),
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Text(
-                                (payChannel.channelCode == "1")
-                                    ? '双11最高可减800元'
-                                    : "",
-                                style: TextStyle(
-                                  color: Color(0xFF999999),
-                                  fontSize:
-                                      (payChannel.channelCode == "1") ? 11 : 0,
-                                ),
-                              ),
-                            ],
-                          ),
-                          margin: EdgeInsets.only(left: 10),
-                        ),
-                        Expanded(
-                          child: Text(
-                            (payChannel.channelCode == "1")
-                                ? "点击“去支付”可选择分期"
-                                : "",
+                            "￥${_data?.data?.orderAmt == null ? "" : _data.data.orderAmt}",
                             style: TextStyle(
-                              color: Color(0xFFF64F2F),
-                              fontSize: 10,
+                              color: Color(0xFF1C1717),
+                              fontSize: 18,
+                              fontFamily: "苹方-简 中黑体",
                             ),
                             textAlign: TextAlign.end,
                           ),
-                        ),
-                        RoundCheckBox(
-                          value: payChannel.isDefault == "1",
-                          colorCheck: Color(0xFFF94D41),
-                          onChanged: (b) => {
-                            for (PayChannelDataPayChannel channel
-                                in _data.data.payChannels)
-                              {
-                                if (payChannel == channel)
-                                  {
-                                    channel.isDefault = "1",
-                                  }
-                                else
-                                  {
-                                    channel.isDefault = "0",
-                                  }
-                              },
-                            setState(() {
-                              payChannel.isDefault = "1";
-                              print('目前选择 : ${payChannel.channelName}');
-                            })
-                          },
-                        ),
-                      ],
-                    ),
-                    height: 61.5,
-                  );
-                }
-              })
+                        ],
+                      ),
+                    );
+                  } else {
+                    PayChannelDataPayChannel payChannel =
+                        _data.data.payChannels[index - 1];
+                    String image = "";
+                    if (payChannel.isDefault == "1") {
+//                      _select = payChannel.channelCode;
+                      _select = payChannel.channelName;
+                    }
+                    switch (payChannel.channelCode) {
+                      case "1":
+                        image = "images/kzp.png";
+                        break;
+                      case "2":
+                        image = "images/wx.png";
+                        break;
+                      case "3":
+                        image = "images/zfb.png";
+                        break;
+                    }
+                    return
+                        // 库分期
+                        Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(image),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  payChannel.channelName,
+                                  style: TextStyle(
+                                    color: Color(0xFF333333),
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Text(
+                                  (payChannel.channelCode == "1")
+                                      ? '双11最高可减800元'
+                                      : "",
+                                  style: TextStyle(
+                                    color: Color(0xFF999999),
+                                    fontSize: (payChannel.channelCode == "1")
+                                        ? 11
+                                        : 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            margin: EdgeInsets.only(left: 10),
+                          ),
+                          Expanded(
+                            child: Text(
+                              (payChannel.channelCode == "1")
+                                  ? "点击“去支付”可选择分期"
+                                  : "",
+                              style: TextStyle(
+                                color: Color(0xFFF64F2F),
+                                fontSize: 10,
+                              ),
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
+                          RoundCheckBox(
+                            value: payChannel.isDefault == "1",
+                            colorCheck: Color(0xFFF94D41),
+                            onChanged: (b) => {
+                              for (PayChannelDataPayChannel channel
+                                  in _data.data.payChannels)
+                                {
+                                  if (payChannel == channel)
+                                    {
+                                      channel.isDefault = "1",
+                                    }
+                                  else
+                                    {
+                                      channel.isDefault = "0",
+                                    }
+                                },
+                              setState(() {
+                                payChannel.isDefault = "1";
+                                print('目前选择 : ${payChannel.channelName}');
+                              })
+                            },
+                          ),
+                        ],
+                      ),
+                      height: 61.5,
+                    );
+                  }
+                })
 //        ListView(
 //          children: _widgets,
 //        ),
@@ -419,7 +423,8 @@ class MyHttpClientState extends State<MyHttpClient> {
 //            )
 //          ],
 //        ),
-          ),
+            ),
+      ),
       bottomNavigationBar: GestureDetector(
         onTap: onCommit,
         child: Container(
@@ -447,7 +452,7 @@ class MyHttpClientState extends State<MyHttpClient> {
 //    var movies = new UserEntity().fromJson(userMap);
 //    print("开始请求 ${movies.toJson()}");
     print("开始请求");
-    DartHttpUtils().getPayChannel("10698196600954507269", (p) {
+    DartHttpUtils().getPayChannel("10699212485399891973", (p) {
       print("请求结束 回调");
       setState(() {
         _data = p;
@@ -552,10 +557,11 @@ class MyHttpClientState extends State<MyHttpClient> {
 
   void onBackPressed() {
     print("点击收银台返回");
-    getData();
+    Navigator.pop(context);
   }
 
   onCommit() {
     print("点击支付 $_select");
+    Toast.show(context, "点击支付 $_select");
   }
 }
