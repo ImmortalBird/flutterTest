@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'HomePage.dart';
 import 'cashier.dart';
 
 void main() => runApp(MyApp());
@@ -10,8 +10,11 @@ class MyApp extends StatelessWidget {
     var appTitle = '收银台';
     return MaterialApp(
       title: appTitle,
-      theme: ThemeData(),
-      home: MyHomePage(title: appTitle),
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      ),
+      // home: MyHomePage(title: appTitle),
+      home: HomePage(),
     );
   }
 }

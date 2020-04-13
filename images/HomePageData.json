@@ -1,0 +1,90 @@
+{
+	"code": 0,
+	"msg": "成功",
+	"data": {
+		"productAmt": "30049.00",
+		"expressAmt": "0.00",
+		"couponText": "",
+		"monthAmt": "2774.52",
+		"totalAmt": "30049.00",
+		"shippingInfo": {
+			"name": "寺库",
+			"phone": "182****8219",
+			"provinceId": "13",
+			"provinceName": "天津",
+			"cityId": "151035",
+			"cityName": "东丽区",
+			"districtId": "155900",
+			"districtName": "服务滨海新区管委会",
+			"streetId": "",
+			"streetName": "",
+			"address": "北京市西城区阜成门外大街999号10楼07单元15层711室07单元15层711室",
+			"shippingId": "682658317051580416",
+			"isDefault": "1"
+		},
+		"products": [{
+			"productId": "13563594",
+			"productName": "Beats Solo3 Wireless 头戴式 蓝牙无线耳机 手机耳机 游戏耳机 - 玫瑰金 MNET2PA/A",
+			"productPrice": "899.00",
+			"monthAmt": "83.01",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t3166/210/2981649535/196231/69f413a/57ea2b1bN12f45893.jpg",
+			"specText": "玫瑰金",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "14471771",
+			"productName": "Apple MacBook Air 13.3 | 定制升级 Core i7 8G 128G SSD硬盘 银色 笔记本电脑 轻薄本 Z0UU00022",
+			"productPrice": "6999.00",
+			"monthAmt": "646.24",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/78357/10/16151/152947/5dd7846aE9c646946/4683872ba8d2490a.jpg",
+			"specText": "i7 8G 128G 银 裸机版",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "1100002151115",
+			"productName": "【NBA联名款】Beats Studio3 Wireless 录音师无线3代 头戴式 蓝牙无线降噪游戏耳机 - 76 人蓝",
+			"productPrice": "1999.00",
+			"monthAmt": "184.57",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/20603/37/6361/576533/5c4ece10E39f23927/8c8d1519cab20cd9.jpg",
+			"specText": "76 人蓝",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "1100004770237",
+			"productName": "Apple iPhone 11 Pro  Max (A2220) 64GB 金色 移动联通电信4G手机 双卡双待",
+			"productPrice": "7850.00",
+			"monthAmt": "724.82",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/83695/8/14304/385263/5dbbb8f0E1eec4869/26f4617432db3fee.png",
+			"specText": "金色 64GB 公开版",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "1100004918486",
+			"productName": "史密斯（A.O.SMITH）60升电热水器 晶彩外观 小京鱼APP智能操控预约 增强双3KW速热 1级能效 京品家电 E60VDW",
+			"productPrice": "2455.00",
+			"monthAmt": "226.68",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/71293/17/13815/224101/5db25f58E26fe8793/f6a87b8c7b7528d3.png",
+			"specText": "【旗舰】升级大屏 便捷时尚 DW 60升",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "1100007410280",
+			"productName": "P30 Pro  8GB+128GB亮黑色",
+			"productPrice": "4488.00",
+			"monthAmt": "414.39",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/63388/5/6886/304911/5d50d397E3a9dc877/32b615b501b8cf29.jpg",
+			"specText": "",
+			"count": "1",
+			"status": "1"
+		}, {
+			"productId": "1100008352498",
+			"productName": "Apple Watch Series 5智能手表（GPS+蜂窝网络款 44毫米深空黑色不锈钢表壳 黑色运动型表带 MWWK2CH/A)",
+			"productPrice": "5359.00",
+			"monthAmt": "494.81",
+			"imgUrl": "http://img13.360buyimg.com/n12/jfs/t1/105720/38/4020/129080/5de4ac74Ed8220486/7e2179615877e9d9.jpg",
+			"specText": "深空黑不锈钢表壳 黑色运动表带 44毫米（适合140-210毫米腕围）",
+			"count": "1",
+			"status": "1"
+		}]
+	}
+}
