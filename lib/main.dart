@@ -7,9 +7,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appTitle = '收银台';
     return MaterialApp(
-      title: appTitle,
       theme: ThemeData(
         primaryColor: Colors.white,
       ),

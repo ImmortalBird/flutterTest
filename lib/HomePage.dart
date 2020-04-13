@@ -1,3 +1,4 @@
+import 'package:cashier/main.dart';
 import 'package:flutter/material.dart';
 import 'ColorsUtil.dart';
 import 'model/HomePageModelDataProducts.dart';
@@ -524,6 +525,8 @@ class _HomePageState extends State<HomePage> {
                 GestureDetector(
                   onTap: () {
                     print('跳转一下页面');
+                    var appTitle = '收银台';
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(title: appTitle)));
                   },
                   child: Container(
                     alignment: Alignment.center,
